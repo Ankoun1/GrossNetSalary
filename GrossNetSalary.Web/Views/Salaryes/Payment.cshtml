@@ -1,0 +1,41 @@
+﻿@model Web.ViewModels.Salary.SalaryPaymentFormModel
+
+@{
+    ViewData["Title"] = "CreateParameters";
+}
+
+<h1>Record</h1>
+
+<h4>Salary Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Payment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                @Html.ValidationMessage("CustomErrorEmail", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="GrossSalary" class="control-label"></label>
+                <input asp-for="GrossSalary" class="form-control" />
+                <span asp-validation-for="GrossSalary" class="text-danger"></span>
+                @Html.ValidationMessage("CustomErrorMonth", new { @class = "text-danger" })
+            </div>    
+            <div class="form-group">
+                <label asp-for="Month" class="control-label"></label>
+                <input asp-for="Month" class="form-control" />
+                <span asp-validation-for="Month" class="text-danger"></span>               
+            </div>             
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

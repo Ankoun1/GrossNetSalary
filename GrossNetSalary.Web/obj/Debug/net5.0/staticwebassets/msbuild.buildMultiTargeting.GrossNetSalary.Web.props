@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GrossNetSalary.Web.props" />
+</Project>

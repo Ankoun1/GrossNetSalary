@@ -1,0 +1,82 @@
+﻿@using static Web.ViewModels.Constants.GlobalConstants.UserConstants
+@model IEnumerable<Web.ViewModels.User.UserInformationViewModel>
+
+
+@{
+    ViewBag.Title = "- - -";
+}
+
+<h2 class="text-center mt-2">@ViewBag.Title</h2>
+<table class="table">
+    <thead>       
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSalary)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var userInfo in Model)
+            {
+                <th>
+                    @userInfo.Year
+                </th>
+                <th>
+                    @userInfo.TotalSalary
+                </th>
+                <th>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a>Month</a>
+                                </th>
+
+                                <th>
+                                    <a>Gross Salary</a>
+                                </th>
+                                <th>
+                                    <a>Net Salary</a>
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var info in userInfo.Salaryes)
+                            {
+                                <tr>
+                                    <th>
+                                        @info.Month
+                                    </th>
+
+                                    <th>
+                                        @info.Gross
+                                    </th>
+
+                                    <th>
+                                        @info.Net
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </th>
+            }
+        </tr>
+    </tbody>
+</table>
+
+@if (User.Identity.Name == AdminName)
+{
+    <div>
+        <a asp-action="All">Back to List</a>
+    </div>
+}
